@@ -15,7 +15,7 @@ public interface PlatoRepository extends CrudRepository<Plato,Integer>{
     Iterable<Plato> listarPlatillosPorCategoria(int idC);
 
     @Modifying
-    @Query("UPDATE Platillo P SET P.stock=stock-:cant WHERE P.id=:id")
+    @Query("UPDATE Plato P SET P.stock=stock-:cant WHERE P.id=:id")
     void descontarStock(int cant, int id);
 
     @Modifying
