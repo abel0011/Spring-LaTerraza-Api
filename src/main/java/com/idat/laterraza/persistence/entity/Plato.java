@@ -13,12 +13,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Plato")
+//@Table(name = "Plato")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Plato {
 
+    /*
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -41,7 +42,35 @@ public class Plato {
     @OneToOne
     private Categoria categoria;
 
+    @Column(name = "vigencia")
+    private boolean vigencia;
+
+    */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(length = 100)
+    private String nombre;
+
+    @OneToOne
+    private DocumentoAlmacenado foto;
+
+    @Column
+    private Double precio;
+
+    @Column
+    private int stock;
+
+    @Column(length = 500)
+    private String descripcionPlatillo;
+
+    @OneToOne
+    private Categoria categoria;
+
     @Column
     private boolean vigencia;
 
+    @Column
+    private boolean recomendado;
 }

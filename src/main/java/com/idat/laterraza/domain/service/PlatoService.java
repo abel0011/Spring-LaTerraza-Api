@@ -2,9 +2,10 @@ package com.idat.laterraza.domain.service;
 
 import javax.transaction.Transactional;
 
+import com.idat.laterraza.domain.crud.PlatoRepository;
 import com.idat.laterraza.domain.util.GenericResponse;
-import com.idat.laterraza.persistence.crud.PlatoRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import static com.idat.laterraza.domain.util.Global.*;
@@ -13,6 +14,7 @@ import static com.idat.laterraza.domain.util.Global.*;
 @Transactional
 public class PlatoService {
 
+    @Autowired
     private final PlatoRepository repository;
 
     public PlatoService(PlatoRepository repository) {

@@ -13,22 +13,32 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Categoria")
+//@Table(name = "Categoria")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Categoria {
-
+   /* 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(length = 100)
+    @Column(name = "nombre",length = 100)
     private String nombre;
 
-    @Column
+    @Column(name = "vigencia")
     private boolean vigencia;
 
+    @OneToOne
+    private DocumentoAlmacenado foto;
+    */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(length = 100)
+    private String nombre;
+    @Column
+    private boolean vigencia;
     @OneToOne
     private DocumentoAlmacenado foto;
     

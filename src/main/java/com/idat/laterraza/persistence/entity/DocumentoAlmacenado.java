@@ -1,5 +1,11 @@
 package com.idat.laterraza.persistence.entity;
 
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.web.multipart.MultipartFile;
+import javax.persistence.*;
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,18 +17,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.web.multipart.MultipartFile;
-import javax.persistence.*;
-
-
 @Entity
-@Table(name = "DocumentoAlmacenado")
+//@Table(name = "DocumentoAlmacenado")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class DocumentoAlmacenado {
-
+/*
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -31,7 +32,7 @@ public class DocumentoAlmacenado {
     private String nombre;
 
     @Column(name = "filename", nullable = true, length = 250)
-    private String fileName;
+    private String filename;
 
     @Column(name = "extension", nullable = true )
     private String extension;
@@ -39,7 +40,7 @@ public class DocumentoAlmacenado {
     @Column(name = "estado", nullable = true  )
     private String estado;
 
-    @Column(name = "eilimando", nullable = true )
+    @Column(name = "eliminado", nullable = true )
     private boolean eliminado;
 
     
@@ -50,5 +51,26 @@ public class DocumentoAlmacenado {
     @Transient
     private String urlFile;
 
+    */
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    private String nombre;
+
+    private String fileName;
+
+    private String extension;
+
+    private String estado;
+
+    private boolean eliminado;
+
+    @Transient
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private MultipartFile file;
+
+    @Transient
+    private String urlFile;
 }
