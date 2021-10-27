@@ -1,16 +1,16 @@
 package com.idat.laterraza.util;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@AllArgsConstructor
 @Data
 public class GenericResponse<T> {
 
     private String type;
-
     private int rpta;
-
     private String message;
-
     private T body;
 
     public GenericResponse() {
@@ -25,13 +25,6 @@ public class GenericResponse<T> {
         rpta = 0;
         message = "";
         this.body = null;
-    }
-
-    public GenericResponse(String type, int rpta, String message, T body) {
-        this.type = type;
-        this.rpta = rpta;
-        this.message = message;
-        this.body = body;
     }
 
 }
