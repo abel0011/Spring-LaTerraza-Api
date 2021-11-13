@@ -12,19 +12,20 @@ import javax.persistence.*;
 @Entity
 @Data
 public class Photo {
+
    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String nombre;
+    private String name;
 
     private String fileName;
 
     private String extension;
 
-    private String estado;
+    private String state;
 
-    private boolean eliminado;
+    private boolean removed;
 
     @Transient
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
@@ -35,11 +36,11 @@ public class Photo {
 
     public Photo() {
         id = 0;
-        nombre = "";
+        name = "";
         fileName = "";
         extension = "";
-        estado = "A";
-        eliminado = false;
+        state = "A";
+        removed = false;
     }
 
 
