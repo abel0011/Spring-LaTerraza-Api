@@ -24,13 +24,13 @@ public class SpecificExceptionHandler {
         return new GenericResponse("valid-exception", RPTA_ERROR, OPERACION_ERRONEA, ex.getMessage());
     }
 
-    @ExceptionHandler(FileStorageException.class)
-    public GenericResponse fileStorageException(FileStorageException ex) {
+    @ExceptionHandler(PhotoStorageException.class)
+    public GenericResponse fileStorageException(PhotoStorageException ex) {
         return new GenericResponse("file-storage-exception", RPTA_ERROR, OPERACION_ERRONEA, ex.getMessage());
     }
 
-    @ExceptionHandler(MyFileNotFoundException.class)
-    public GenericResponse myFileNotFoundException(MyFileNotFoundException exception) {
+    @ExceptionHandler(MyPhotoNotFoundException.class)
+    public GenericResponse myFileNotFoundException(MyPhotoNotFoundException exception) {
         return new GenericResponse("my-file-not-found-exception", RPTA_ERROR, OPERACION_INCORRECTA, exception.getMessage());
     } 
 }
