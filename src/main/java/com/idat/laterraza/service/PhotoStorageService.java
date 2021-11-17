@@ -39,12 +39,13 @@ public class PhotoStorageService {
 
         Path fileStorageLocation = getFileStorageLocation(getFolderName(originalName));
         Path targetLocation = fileStorageLocation.resolve(fileName + extension);
+
         try {
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
             return fileName;
 
-        } catch (IOException e) {
-            throw new PhotoStorageException("No se pudo almacenar el archivo", e);
+        } catch (IOException ex) {
+            throw new PhotoStorageException("No se pudo almacenar el archivo", ex);
         }
     }
 
@@ -54,18 +55,23 @@ public class PhotoStorageService {
     }
 
     private Path getFileStorageLocation(String folderName) {
+
         Path fileStorageLocation = Paths.get(fileStorageProperties.getUploadDir() + "/" + folderName).toAbsolutePath().normalize();
         try {
+
             Files.createDirectories(fileStorageLocation);
             return fileStorageLocation;
+
         } catch (IOException e) {
             throw new PhotoStorageException("No se pudo crear el directorio", e);
         }
     }
 
     public Resource loadResource(String completeFileName) {
+
         Path fileStorageLocation = getFileStorageLocation(getFolderName(completeFileName));
         Path path = fileStorageLocation.resolve(completeFileName).normalize();
+
         try {
             Resource resource = new UrlResource(path.toUri());
             if (resource.exists()) {

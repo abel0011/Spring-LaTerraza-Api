@@ -24,26 +24,22 @@ import static com.idat.laterraza.util.Global.*;
 @Transactional
 public class PhotoService {
 
-    private StoredPhotoRepository repo;
+    @Autowired
+    private StoredPhotoRepository repository;
+
+    @Autowired
     private PhotoStorageService storageService;
 
-    public PhotoService(StoredPhotoRepository repo, PhotoStorageService storageService) {
-        this.repo = repo;
-        this.storageService = storageService;
-    }
 
     public GenericResponse<Iterable<Photo>> list() {
-        return new GenericResponse<Iterable<Photo>>(TIPO_RESULT, RPTA_OK, OPERACION_CORRECTA, repo.list());
+        return new GenericResponse<Iterable<Photo>>(TYPE_RESULT, RESPONSE_OK, CORRECT_OPERATION, repository.list());
     }
 
-
-    public GenericResponse find(Long aLong) {
-        return null;
-    }
 
 
     public GenericResponse save(Photo obj) {
-        String fileName = (repo.findById(obj.getId())).orElse(new Photo()).getFileName();
+
+        String fileName = (repository.findById(obj.getId())).orElse(new Photo()).getFileName();
 
         String originalFilename = obj.getFile().getOriginalFilename();
         String extension = originalFilename.substring(originalFilename.lastIndexOf("."));
@@ -53,17 +49,18 @@ public class PhotoService {
         obj.setFileName(fileName);
         obj.setExtension(extension);
 
-        return new GenericResponse(TIPO_DATA, RPTA_OK,OPERACION_CORRECTA,repo.save(obj));
+        return new GenericResponse(TYPE_DATA, RESPONSE_OK, CORRECT_OPERATION, repository.save(obj));
     }
 
     public ResponseEntity<Resource> download(String completefileName, HttpServletRequest request) {
+
         Resource resource = storageService.loadResource(completefileName);
         String contentType = null;
 
         try {
             contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
 
         if (contentType == null) {
@@ -77,8 +74,8 @@ public class PhotoService {
     }
 
     public ResponseEntity<Resource> downloadByFileName(String fileName, HttpServletRequest request) {
-        Photo doc = repo.findByFileName(fileName).orElse(new Photo());
-        return download(doc.getCompleteFileName(), request);
+        Photo photo = repository.findByFileName(fileName).orElse(new Photo());
+        return download(photo.getCompleteFileName(), request);
     }
 
 

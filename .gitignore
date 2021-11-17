@@ -22,7 +22,7 @@ target/
 
 ### NetBeans ###
 /nbproject/private/
-/db/*
+/db/
 /nbbuild/
 /dist/
 /nbdist/

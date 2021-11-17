@@ -1,21 +1,24 @@
 package com.idat.laterraza.util;
 
 public class Global {
-
+    // enum representan un grupos de constantes que defienen un tipo de dato
     public enum Estado {
-        A, //activo
-        I ///inactivo
+        A, //Activo
+        I  //Inactivo
     }
 
-    public static final String TIPO_RESULT = "Resultado";
-    public static final String TIPO_DATA = "data";
-    public static final String TIPO_AUTH = "auth";
-    public static final int RPTA_OK = 1;
-    public static final int RPTA_WARNING = 0;
-    public static final int RPTA_ERROR = -1;
-    public static final String OPERACION_CORRECTA = "Operación finalizada correctamente";
-    public static final String OPERACION_INCORRECTA = "No se ha podido culminar la operación";
-    public static final String OPERACION_ERRONEA = "Ha ocurrido un error al realizar la operación";
+    //Variables globales
+    public static final String TYPE_RESULT = "Result";
+    public static final String TYPE_DATA = "Data";
+    public static final String TYPE_AUTH = "Auth";
+
+    public static final int RESPONSE_OK = 1;
+    public static final int RESPONSE_ERROR = -1;
+    public static final int RESPONSE_WARNING = 0;
+
+    public static final String CORRECT_OPERATION = "Operación finalizada correctamente";
+    public static final String INCORRECT_OPERATION = "No se ha podido culminar la operación";
+    public static final String ERROR_OPERATION = "Ha ocurrido un error al realizar la operación";
     public static final String AUTH_SECRET = "";
     
 }

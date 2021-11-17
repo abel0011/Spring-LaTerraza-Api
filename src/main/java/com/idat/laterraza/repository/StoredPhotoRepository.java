@@ -7,10 +7,10 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface StoredPhotoRepository extends CrudRepository<Photo,Long>{
 
-    @Query("SELECT po FROM Photo po WHERE po.state = 'A' AND po.removed = false")
+    @Query("SELECT po FROM Photo po WHERE po.status = 'A' AND po.removed = false")
     Iterable<Photo> list();
 
-    @Query("SELECT po FROM Photo po WHERE po.fileName = :fileName AND po.state = 'A' AND po.removed = false")
+    @Query("SELECT po FROM Photo po WHERE po.fileName = :fileName AND po.status = 'A' AND po.removed = false")
     Optional<Photo> findByFileName(String fileName);
     
 }
