@@ -17,6 +17,9 @@ INSERT INTO DB_LATERRAZA.client (birth_name, date_birth, dni, first_name, last_n
 INSERT INTO DB_LATERRAZA.client (birth_name, date_birth, dni, first_name, last_name, middle_name, phone) VALUES('Lopez', '2021/11/15 12:00:00', '77129426', 'Javier', 'Vazques', 'Jose', '991023477');
 
 INSERT INTO DB_LATERRAZA.users (email, id_rol, password, id_client, id_roles) VALUES('admin@gmail.com', 2, 'luis123', 1, 1);
+INSERT INTO DB_LATERRAZA.users (email, id_rol, password, id_client, id_roles) VALUES('fernanda@gmail.com', 2, 'fernanda123', 2,  2);
+INSERT INTO DB_LATERRAZA.users (email, id_rol, password, id_client, id_roles) VALUES('javier@gmail.com', 2, 'javier123', 3,  2);
+
 -- INSERT INTO DB_LATERRAZA.users (email, id_rol, password, id_client, id_roles) VALUES('luz@gmail.com', 2, 'luz123', 2, 2);
 -- INSERT INTO DB_LATERRAZA.users (email, id_rol, password, id_client, id_roles) VALUES('lopezs@gmail.com', 2, 'lopez123', 3, 2);
 
