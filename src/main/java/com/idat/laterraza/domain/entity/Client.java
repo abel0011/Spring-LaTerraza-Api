@@ -2,8 +2,10 @@ package com.idat.laterraza.domain.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -56,7 +58,7 @@ public class Client {
     private Date  dateOfBirth;
 
 
-    @OneToOne(mappedBy = "client") //mapea la taba donde no existe FK
+    @OneToOne(mappedBy = "client",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.LAZY) //mapea la taba donde no existe FK
     private Users users;
 
 
