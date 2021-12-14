@@ -10,7 +10,8 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 @Component
 public class JWTUtil {
-      // Secret ey
+
+     // Secret key
     private static final String KEY = "1d4tpr0yNNNMVBVHGHT";
 
     public String generaToken(UserDetails userDetails) {
